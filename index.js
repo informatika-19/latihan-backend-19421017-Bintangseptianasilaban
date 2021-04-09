@@ -26,7 +26,7 @@ app.use(bodypanser.urlencoded({
 }))
 
 app.get('/', (req, res) => {
-  res.send('<h1>fersa anderson</h1>')
+  res.send('<h1>hello world</h1>')
 })
 //req param
 app.get('/daerah/:namadaerah/:id', (req, res) => {
