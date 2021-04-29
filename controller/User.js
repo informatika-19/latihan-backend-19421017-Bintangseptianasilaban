@@ -35,3 +35,32 @@ userModel.findOne({
 })
 
 })
+exports.login = (data) =>
+new Promise((resolve, reject) =>{
+    try {
+        userModel.findOne({
+            UserName: data.UserName
+        }).then(user => {
+            if (user) {
+                if (bcrypt.compareSync(data.Password, user.Password)) {
+                    resolve({
+                        status: true,
+                        pesan: 'BERHASIL LOGIN'
+                    })
+                } else {
+                    reject({
+                        status: false,
+                        pesan: 'PASSWORD TIDAK SESUAI'
+                    })
+                }
+            } else {
+                reject({
+                    status: false,
+                    pesan: 'USERNAME TIDAK TERDAFTAR'
+                })
+            }
+        })
+    } catch (e) {
+        console.log(e)
+    }
+})
