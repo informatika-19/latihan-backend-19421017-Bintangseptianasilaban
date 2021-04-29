@@ -12,4 +12,12 @@ router.post('/register', (req, res) =>{
 })
 
 
+router.post('/login', (req, res) =>{
+    userController.login(req.body)
+    .then(result => res.json(result))
+    .catch(err => res.json(err))
+
+})
+
+
 module.exports = router

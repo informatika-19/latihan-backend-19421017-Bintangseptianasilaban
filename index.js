@@ -1,6 +1,6 @@
-const express = require('express')
+const express = require ('express')
 const app = express()
-const bodypanser = require('body-parser') 
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 mongoose.connect('mongodb://localhost:27017/latihan',{
@@ -15,34 +15,42 @@ mongoose.connect('mongodb://localhost:27017/latihan',{
   console.log('gagal connect ke database')
 })
 
-app.use(bodypanser.json({
-    extends: true,
-    limit: '20mb' 
+
+
+app.use(bodyParser.json({
+    extended: true,
+    limit:'20mb'
 }))
 
-app.use(bodypanser.urlencoded({
-    extends: true,
-    limit: '20mb'
+app.use(bodyParser.urlencoded({
+    extended: true,
+    limit:'20mb'
 }))
 
 app.get('/', (req, res) => {
-  res.send('<h1>hello world</h1>')
+    res.send('<h1>Bintang Septiana</h1>')
 })
-//req param
+
+app.get('/profile/:username/:id', (req, res) => {
+    console.log(req.params)
+    res.send('Username Anda ' + req.params.username)
+})
+
 app.get('/daerah/:namadaerah/:id', (req, res) => {
     const namadaerah = req.params.namadaerah
-    const iddaerah = req.params.id
-  res.send('Anda Di : ' + namadaerah + ' Id Daerah : ' + iddaerah)  
+    const idDaerah = req.params.idDaerah
+    res.send('Daerah Aanda ' + req.params.namadaerah)
 })
- //req buddy
-//app.post('/register', (req, res) =>{
-//res.json(req.body)
-//console.log(req.body)
+//req body
+//app.post('/register', (req, res) => {
+    //res.json(req.body)
+    //console.log(req.body)
 //})
-//const useRoutes = require('.')
-app.use('/user/', require('./routes/User'))
+//const userRoutes = require('./routes/User'))
+//app,use('/user/', userRoutes
+app.use('/user/', require ('./routes/User'))
+app.use('/kegiatan/', require('./routes/Kegiatan'))
 
-
-app.listen(3000, () => {
-    console.log('server Startet')
+app.listen(3000, () =>{
+    console.log('Server Mulai')
 })
