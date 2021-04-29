@@ -11,10 +11,6 @@ const userSchema = new Schema({
     default: '',
     type: String
     },
-    namalengkap: {
-     default: '',
-    type: String
-    },
     alamat: {
     default: '',
     type: String

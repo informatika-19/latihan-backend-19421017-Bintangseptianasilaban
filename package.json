@@ -1,7 +1,7 @@
 {
-  "name": "latihan-backend",
+  "name": "utspemrograman",
   "version": "1.0.0",
-  "description": "latihan membuat server",
+  "description": "toko bunga",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
